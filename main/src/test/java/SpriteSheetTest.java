@@ -2,35 +2,46 @@ import ecs.component.Sprite;
 import ecs.component.SpriteSheet;
 
 import javax.imageio.ImageIO;
+import java.awt.Dimension;
 import java.io.File;
 import java.io.IOException;
 
 public class SpriteSheetTest {
 
+    private static SpriteSheet playerRunningLeft;
+    private static SpriteSheet playerRunningRight;
+    private static SpriteSheet playerTeleport;
+    private static final String playerRunningFilePath = "main/src/main/resources/spriteSheets/player/right.png";
+    private static final String playerTeleportFilePath = "main/src/main/resources/spriteSheets/player/teleport.png";
+    private static final Dimension playerSize = new Dimension(64, 64);
+    private static final String outputFolder = "main/src/test/java/out/";
 
-    public static void main(String[] args) {
-        String path = "main/src/main/resources/spriteSheets/player/running.png";
-        SpriteSheet spRight = new SpriteSheet(path, "running_right");
-        SpriteSheet spLeft = new SpriteSheet(path, "running_left");
-        spLeft.mirrorSpriteSheet();
+    private static void setUp() {
+        playerRunningLeft = new SpriteSheet(playerRunningFilePath, "player_left", playerSize);
+        playerRunningRight = new SpriteSheet(playerRunningFilePath, "player_right", playerSize);
+        playerTeleport = new SpriteSheet(playerTeleportFilePath, "player_teleport", playerSize);
+        playerRunningLeft.mirrorSpriteSheet();
+    }
 
-        String mainFolder = "main/src/test/java/out/";
-
-        for (int i = 0; i < spRight.size(); i++) {
-            Sprite spriteRight = spRight.get(i);
-            Sprite spriteLeft = spLeft.get(i);
-            String imagePathRight = mainFolder + spriteRight.getSpriteId().replace(" ", "_") + ".png";
-            String imagePathLeft = mainFolder + spriteLeft.getSpriteId().replace(" ", "_") + ".png";
-            File imageFileRight = new File(imagePathRight);
-            File imageFileLeft = new File(imagePathLeft);
+    private static void saveImages(SpriteSheet spriteSheet) {
+        for (Sprite s : spriteSheet.getSprites()) {
+            String spriteFileName = outputFolder + s.getSpriteId() + ".png";
+            File imageFile = new File(spriteFileName);
             try {
-                ImageIO.write(spriteLeft.getImage(), "png", imageFileLeft);
-                ImageIO.write(spriteRight.getImage(), "png", imageFileRight);
+                ImageIO.write(s.getImage(), "png", imageFile);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                System.exit(-1);
             }
         }
+    }
 
+
+    public static void main(String[] args) {
+        setUp();
+        saveImages(playerRunningLeft);
+        saveImages(playerRunningRight);
+        saveImages(playerTeleport);
     }
 
 }

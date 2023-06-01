@@ -23,4 +23,11 @@ public class Vector2<T> {
         this.y = y;
     }
 
+    @Override
+    public String toString() {
+        return "Vector2{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

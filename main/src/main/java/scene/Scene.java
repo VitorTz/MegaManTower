@@ -1,6 +1,6 @@
 package scene;
 
-import ecs.entity.Entity;
+import ecs.GameObj;
 
 import java.awt.Graphics2D;
 import java.util.HashMap;
@@ -8,18 +8,18 @@ import java.util.HashMap;
 public abstract class Scene {
 
     protected String name;
-    protected HashMap<Integer, Entity> entities = new HashMap<>();
+    protected HashMap<Integer, GameObj> entities = new HashMap<>();
 
     public Scene(String name) {
         this.name = name;
         this.init();
     }
 
-    protected void addEntity(Entity entity) {
+    protected void addEntity(GameObj entity) {
         this.entities.put(entity.getId(), entity);
     }
 
-    protected void removeEntity(Entity entity) {
+    protected void removeEntity(GameObj entity) {
         this.entities.remove(entity.getId());
     }
 

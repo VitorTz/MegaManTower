@@ -17,10 +17,12 @@ public class Transform {
         this.position.set(posX, posY);
     }
 
-    public Transform(Vector2f position, Vector2f scale, double rotation) {
-        this.position = position;
-        this.scale = scale;
-        this.rotation = rotation;
+    @Override
+    public String toString() {
+        return "Transform{" +
+                "position=" + position +
+                ", scale=" + scale +
+                ", rotation=" + rotation +
+                '}';
     }
-
 }
