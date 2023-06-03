@@ -13,4 +13,7 @@ public class Constants {
     public static final long FPS_IN_MILLS = 1000L / 120;
     public static final Color SCREEN_BG_COLOR = new Color(40, 44, 52);
 
+    public static final float PLAYER_SPEED = 200;
+    public static final Dimension PLAYER_SIZE = new Dimension(64, 64);
+
 }

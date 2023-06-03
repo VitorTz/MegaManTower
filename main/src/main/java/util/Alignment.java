@@ -6,5 +6,9 @@ public enum  Alignment {
     BOTTOM,
     TOP,
     LEFT,
-    RIGHT
+    RIGHT,
+    LEFTOP,
+    RIGHTTOP,
+    LEFTBOTTOM,
+    RIGHTBOTTOM
 }

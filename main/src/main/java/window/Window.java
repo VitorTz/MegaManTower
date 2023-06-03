@@ -32,6 +32,7 @@ public class Window extends JFrame implements Runnable {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.addKeyListener(new KL());
         this.setVisible(true);
     }
 
@@ -84,6 +85,7 @@ public class Window extends JFrame implements Runnable {
                 double deltaTime = Time.getDeltaTime();
                 this.update(deltaTime);
                 Time.sleep(Constants.FPS_IN_MILLS);
+                System.out.println();
             } catch (Exception e) {
                 e.printStackTrace();
                 System.exit(-1);

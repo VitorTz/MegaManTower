@@ -1,8 +1,12 @@
 package scene;
 
 import ecs.GameObj;
+import ecs.components.Player;
+import ecs.components.SpriteAnimation;
 import math.Transform;
-import java.awt.Graphics2D;
+import util.Alignment;
+
+import java.awt.*;
 
 
 public class LevelScene extends Scene {
@@ -13,7 +17,8 @@ public class LevelScene extends Scene {
 
     @Override
     public void init() {
-        GameObj player = GameObj.newGameObj("Player", new Transform(100f, 100f));
+        GameObj player = GameObj.newGameObj("Player", new Transform(100f, 720f));
+        player.addComponent(new Player());
         this.addEntity(player);
     }
 

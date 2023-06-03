@@ -51,14 +51,6 @@ public class Sprite extends Component {
         return image;
     }
 
-    public int getWidth() {
-        return this.image.getWidth();
-    }
-
-    public int getHeight() {
-        return this.image.getHeight();
-    }
-
     @Override
     public void draw(Graphics2D g2) {
         Transform transform = gameObj.transform;
